@@ -33,11 +33,11 @@ function VideoUpload() {
 
         try {
             const response = await axios.post("/api/video-upload", formData)
-            // check for 200 response
-            router.push("/")
+            // console.log(response);
+            router.push("/home")
         } catch (error) {
             console.log(error)
-            // notification for failure
+            
         } finally{
             setIsUploading(false)
         }

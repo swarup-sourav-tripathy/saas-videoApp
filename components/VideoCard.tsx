@@ -39,6 +39,8 @@ const  VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
         })
     }, [])
 
+    console.log(getFullVideoUrl(video.publicId),"url2",video.title);
+
     const getPreviewVideoUrl = useCallback((publicId: string) => {
         return getCldVideoUrl({
             src: publicId,
@@ -136,9 +138,8 @@ const  VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
               </div>
               <button
                 className="btn btn-primary btn-sm"
-                onClick={() =>
-                  onDownload(getFullVideoUrl(video.publicId), video.title)
-                }
+                onClick={() => 
+                 onDownload(getFullVideoUrl(video.publicId), video.title)}
               >
                 <Download size={16} />
               </button>
