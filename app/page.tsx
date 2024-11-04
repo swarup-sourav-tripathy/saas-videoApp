@@ -24,11 +24,7 @@ const userItem = [
   { href: "/sign-in", icon: LogInIcon, label: "Login" },
 ];
 
-export default function AppLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
