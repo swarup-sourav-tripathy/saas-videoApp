@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
         const description = formData.get("description") as string;
         const originalSize = formData.get("originalSize") as string;
 
-        // console.log(formData);
+        console.log(formData);
         
 
         if (!file) {
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
             }
         )
 
-        // console.log(result);
+        console.log(result);
         
         const video = await prisma.video.create({
             data: {
