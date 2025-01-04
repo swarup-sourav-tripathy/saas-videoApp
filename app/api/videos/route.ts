@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
         const headers = new Headers();
         headers.set("Cache-Control", "no-store");
 
-        return NextResponse.json(videos)
+        return NextResponse.json(videos, { headers })
     } catch (error) {
         return NextResponse.json({ error: "Error fetching videos" }, { status: 500 })
     } finally {
