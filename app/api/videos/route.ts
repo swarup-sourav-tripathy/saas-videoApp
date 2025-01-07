@@ -3,6 +3,7 @@ import prisma from "@/prisma/lib/prisma";
 
 export async function GET(request: NextRequest) {
     try {
+        
         const videos = await prisma.video.findMany({
             orderBy: { createdAt: "desc" }
         })
@@ -13,6 +14,7 @@ export async function GET(request: NextRequest) {
 
         return NextResponse.json(videos, { headers })
     } catch (error) {
+        console.log(error)
         return NextResponse.json({ error: "Error fetching videos" }, { status: 500 })
     } finally {
         await prisma.$disconnect()

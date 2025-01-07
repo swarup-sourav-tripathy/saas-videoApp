@@ -5,6 +5,8 @@ import { PrismaClient } from '@prisma/client';
 
 
 const prisma = new PrismaClient()
+// console.log(prisma);
+
 
 // Configuration
 cloudinary.config({
@@ -79,6 +81,8 @@ export async function POST(request: NextRequest) {
         )
 
         console.log(result);
+
+        // console.log('Initializing Prisma client...');
         
         const video = await prisma.video.create({
             data: {
@@ -90,6 +94,7 @@ export async function POST(request: NextRequest) {
                 duration: result.duration || 0,
             }
         })
+        // console.log('Prisma initialized:');
 
         console.log(video,"ok");
         
@@ -97,7 +102,7 @@ export async function POST(request: NextRequest) {
 
     } catch (error) {
         console.log("Upload video failed", error)
-        return NextResponse.json({ error: "UPload video failed" }, { status: 500 })
+        return NextResponse.json({ error: "Upload video failed" }, { status: 500 })
     } finally {
         await prisma.$disconnect()
     }
