@@ -11,6 +11,10 @@ export async function GET(request: NextRequest) {
 
         const headers = new Headers();
         headers.set("Cache-Control", "no-store");
+        headers.set('Pragma', 'no-cache');
+        headers.set('Expires', '0');
+        headers.set('Vary', 'Origin');
+
 
         return NextResponse.json(videos, { headers })
     } catch (error) {
