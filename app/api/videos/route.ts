@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
 import prisma from "@/prisma/lib/prisma";
+import { unstable_noStore as noCache } from "next/cache";
+
 
 export async function GET(request: NextRequest) {
     try {
-        
+       noCache()
         const videos = await prisma.video.findMany({
             orderBy: { createdAt: "desc" }
         })
@@ -16,7 +18,7 @@ export async function GET(request: NextRequest) {
         headers.set('Vary', 'Origin');
 
 
-        return NextResponse.json(videos, { headers })
+        return NextResponse.json(videos , { headers })
     } catch (error) {
         console.log(error)
         return NextResponse.json({ error: "Error fetching videos" }, { status: 500 })
