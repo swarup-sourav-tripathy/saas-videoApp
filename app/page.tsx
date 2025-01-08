@@ -52,7 +52,8 @@ export default function AppLayout() {
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
         <header className="w-full bg-base-200">
-          <div className="navbar max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="navbar max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            {/* Menu button for small screens */}
             <div className="flex-none lg:hidden">
               <label
                 htmlFor="sidebar-drawer"
@@ -61,25 +62,30 @@ export default function AppLayout() {
                 <MenuIcon />
               </label>
             </div>
+
+            {/* Logo Section */}
             <div className="flex-1">
               <Link href="/" onClick={handleLogoClick}>
-                <div className="btn btn-ghost normal-case text-balance md:text-2xl font-bold tracking-tight cursor-pointer">
+                <div className="btn btn-ghost normal-case text-lg md:text-2xl font-bold tracking-tight">
                   Video Compression
                 </div>
               </Link>
             </div>
+
+            {/* User Info Section */}
             <div className="flex-none flex items-center space-x-4">
               {user && (
                 <>
                   <div className="avatar">
                     <div className="w-8 h-8 rounded-full">
-                      
                       <Image
                         src={user.imageUrl}
                         alt={
                           user.username || user.emailAddresses[0].emailAddress
                         }
-                        width={10}
+                        width={32}
+                        height={32}
+                        className="object-cover"
                       />
                     </div>
                   </div>
@@ -97,6 +103,7 @@ export default function AppLayout() {
             </div>
           </div>
         </header>
+
         {/* Page content */}
         <main className="flex-grow">
           <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 my-8">
